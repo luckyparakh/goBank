@@ -111,7 +111,6 @@ func (q *Queries) GetAccountForUpdate(ctx context.Context, id int64) (Account, e
 }
 
 const listAccounts = `-- name: ListAccounts :many
-
 SELECT id, owner, balance, currency, created_at FROM accounts
 WHERE owner = $1
 ORDER BY id
@@ -125,7 +124,6 @@ type ListAccountsParams struct {
 	Offset int32  `json:"offset"`
 }
 
-// VIMP for removing deadlock
 func (q *Queries) ListAccounts(ctx context.Context, arg ListAccountsParams) ([]Account, error) {
 	rows, err := q.db.QueryContext(ctx, listAccounts, arg.Owner, arg.Limit, arg.Offset)
 	if err != nil {
