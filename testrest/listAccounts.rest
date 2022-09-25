@@ -1,0 +1,11 @@
+@host= localhost:8080
+GET http://{{host}}/accounts/?page_id=1&page_size=5
+
+###
+@host= localhost:8080
+GET http://{{host}}/accounts/?page_id=1&page_size=50
+
+
+###
+@host= localhost:8080
+GET http://{{host}}/accounts/?page_id=0&page_size=5

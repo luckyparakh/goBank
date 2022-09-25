@@ -1,0 +1,9 @@
+@host= localhost:8080
+GET http://{{host}}/accounts/1
+
+###
+@host= localhost:8080
+GET http://{{host}}/accounts/-1
+
+###
+GET http://{{host}}/accounts/20

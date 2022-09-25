@@ -1,0 +1,34 @@
+# for this to work install rest client extension in vscode 
+# Valid Json body 
+@host= localhost:8080
+
+POST http://{{host}}/accounts/ HTTP/1.1
+content-type: application/json
+
+{
+  "owner":"rishi",
+  "currency":"USD"
+}
+
+### 
+# Invalid Currency
+
+POST http://{{host}}/accounts/ HTTP/1.1
+content-type: application/json
+
+{
+  "owner":"rishi",
+  "currency":"zyx"
+}
+
+
+### 
+# Invalid Name
+
+POST http://{{host}}/accounts/ HTTP/1.1
+content-type: application/json
+
+{
+  "owner":"",
+  "currency":""
+}

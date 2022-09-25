@@ -1,0 +1,24 @@
+# Currency Mismatch
+@host= localhost:8080
+
+POST http://{{host}}/transfer/ HTTP/1.1
+content-type: application/json
+
+{
+  "from_account_id": 1,
+  "to_account_id": 2,
+  "amount": 30,
+  "currency": "USD"
+}
+
+
+###
+POST http://{{host}}/transfer/ HTTP/1.1
+content-type: application/json
+
+{
+  "from_account_id": 2,
+  "to_account_id": 3,
+  "amount": 100,
+  "currency": "CAD"
+}

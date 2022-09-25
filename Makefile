@@ -16,6 +16,11 @@ sqlc:
 	sqlc generate
 test:
 	go test -v -cover ./...
+mock:
+	mockgen -build_flags=--mod=mod -package mockdb -destination db/mock/store.go github.com/luckyparakh/goBank/db/sqlc Store
 up: deletepg createpg createdb migrateup sqlc
+
+server:
+	go run main.go
 # https://stackoverflow.com/questions/2145590/what-is-the-purpose-of-phony-in-a-makefile
-.PHONY: createpg deletepg createdb dropdb migrateup migratedown sqlc up
+.PHONY: createpg deletepg createdb dropdb migrateup migratedown sqlc up server mock
