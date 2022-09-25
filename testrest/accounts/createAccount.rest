@@ -6,10 +6,18 @@ POST http://{{host}}/accounts/ HTTP/1.1
 content-type: application/json
 
 {
-  "owner":"rishi",
+  "owner":"azkkli",
   "currency":"USD"
 }
+###
 
+POST http://{{host}}/accounts/ HTTP/1.1
+content-type: application/json
+
+{
+  "owner":"azkkli",
+  "currency":"INR"
+}
 ### 
 # Invalid Currency
 

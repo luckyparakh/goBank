@@ -11,7 +11,13 @@ dropdb:
 migrateup:
 	migrate -path db/migration -database "postgres://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
 migratedown:
-	migrate -path dbMigration -database "postgres://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
+	migrate -path db/migration -database "postgres://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
+migrateup1:
+# here 1 at end is version, check schema_migrations table for version info
+	migrate -path db/migration -database "postgres://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up 1
+migratedown1:
+# here 1 at end is version,  check schema_migrations table for version info
+	migrate -path db/migration -database "postgres://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down 1
 sqlc:
 	sqlc generate
 test:
@@ -23,4 +29,4 @@ up: deletepg createpg createdb migrateup sqlc
 server:
 	go run main.go
 # https://stackoverflow.com/questions/2145590/what-is-the-purpose-of-phony-in-a-makefile
-.PHONY: createpg deletepg createdb dropdb migrateup migratedown sqlc up server mock
+.PHONY: createpg deletepg createdb dropdb migrateup migratedown migrateup1 migratedown1 sqlc up server mock
