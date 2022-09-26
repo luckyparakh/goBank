@@ -1,9 +1,58 @@
 @host= localhost:8080
 
-POST http://{{host}}/accounts/ HTTP/1.1
+POST http://{{host}}/users/ HTTP/1.1
 content-type: application/json
 
 {
-  "owner":"azkkli",
-  "currency":"USD"
+  "username": "erispar",
+  "password": "asqsws",
+  "email": "rpoi@email.com",
+  "full_name": "rp"
+}
+
+###
+# Duplicate user name and email
+POST http://{{host}}/users/ HTTP/1.1
+content-type: application/json
+
+{
+  "username": "abczyx",
+  "password": "asqsws",
+  "email": "rp@email.com",
+  "full_name": "rp"
+}
+
+###
+# invalid email
+POST http://{{host}}/users/ HTTP/1.1
+content-type: application/json
+
+{
+  "username": "abczyx",
+  "password": "asqsws",
+  "email": "rpemail.com",
+  "full_name": "rp"
+}
+
+###
+# Missing required feild 
+POST http://{{host}}/users/ HTTP/1.1
+content-type: application/json
+
+{
+  "username": "abczyx",
+  "password": "asqsws",
+  "email": "rp@email.com"
+}
+
+###
+# invalid username
+POST http://{{host}}/users/ HTTP/1.1
+content-type: application/json
+
+{
+  "username": "abczyx#@",
+  "password": "asqsws",
+  "email": "rp@email.com",
+  "full_name": "rp"
 }
