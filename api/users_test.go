@@ -18,18 +18,18 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-type eqCreateUserParamMatcher struct {
-	args db.CreateUserParams
-	password string
-}
+// type eqCreateUserParamMatcher struct {
+// 	args db.CreateUserParams
+// 	password string
+// }
 
-func (e eqCreateUserParamMatcher) Matches(x interface{}) bool {
-	return reflect.DeepEqual(e.x, x)
-}
+// func (e eqCreateUserParamMatcher) Matches(x interface{}) bool {
+// 	return reflect.DeepEqual(e.x, x)
+// }
 
-func (e eqCreateUserParamMatcher) String() string {
-	return fmt.Sprintf("is equal to %v", e.x)
-}
+// func (e eqCreateUserParamMatcher) String() string {
+// 	return fmt.Sprintf("is equal to %v", e.x)
+// }
 func TestCreateUser(t *testing.T) {
 	user, password := randomUser(t)
 	testCases := []struct {
