@@ -3,11 +3,9 @@ package api
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
-	"reflect"
 	"testing"
 
 	"github.com/gin-gonic/gin"
@@ -27,9 +25,9 @@ import (
 // 	return reflect.DeepEqual(e.x, x)
 // }
 
-// func (e eqCreateUserParamMatcher) String() string {
-// 	return fmt.Sprintf("is equal to %v", e.x)
-// }
+//	func (e eqCreateUserParamMatcher) String() string {
+//		return fmt.Sprintf("is equal to %v", e.x)
+//	}
 func TestCreateUser(t *testing.T) {
 	user, password := randomUser(t)
 	testCases := []struct {
@@ -66,7 +64,7 @@ func TestCreateUser(t *testing.T) {
 			store := mockdb.NewMockStore(ctrl)
 			tc.buildStubs(store)
 
-			server := NewServer(store)
+			server := newTestServer(t, store)
 			recorder := httptest.NewRecorder()
 
 			body, err := json.Marshal(tc.body)

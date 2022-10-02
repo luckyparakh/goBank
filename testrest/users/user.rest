@@ -1,15 +1,5 @@
 @host= localhost:8080
 
-POST http://{{host}}/users/ HTTP/1.1
-content-type: application/json
-
-{
-  "username": "erispar",
-  "password": "asqsws",
-  "email": "rpoi@email.com",
-  "full_name": "rp"
-}
-
 ###
 # Duplicate user name and email
 POST http://{{host}}/users/ HTTP/1.1
@@ -55,4 +45,51 @@ content-type: application/json
   "password": "asqsws",
   "email": "rp@email.com",
   "full_name": "rp"
+}
+
+###
+POST http://{{host}}/users/ HTTP/1.1
+content-type: application/json
+
+{
+  "username": "erispar",
+  "password": "asqsws",
+  "email": "rpoi@email.com",
+  "full_name": "rp"
+}
+
+###
+POST http://{{host}}/users/login HTTP/1.1
+content-type: application/json
+
+{
+  "username": "erispar",
+  "password": "asqsws"
+}
+
+###
+POST http://{{host}}/users/login HTTP/1.1
+content-type: application/json
+
+{
+  "username": "erispar",
+  "password": "inva"
+}
+
+###
+POST http://{{host}}/users/login HTTP/1.1
+content-type: application/json
+
+{
+  "username": "erispar",
+  "password": "wrong password"
+}
+
+###
+POST http://{{host}}/users/login HTTP/1.1
+content-type: application/json
+
+{
+  "username": "notExists",
+  "password": "wrong password"
 }
